@@ -1,67 +1,50 @@
 import json
 import os
-def checkForValueJSON(name):
-    file_size = os.path.getsize('json/main.json')
-    if file_size > 0:
-        print('file is here [func print]')
-        with open('json/main.json', 'r') as f:
-            data = json.load(f)
 
-        if name in data:
-            print('key exists')
-
-        else: 
-            print('key does not exist')
-
-    else:
-        print('file is not here')
 
 def main():
-    #data = {
-        #"address": "the",
-        #"other": 120,
-        #"why": "new david"
-    #}
-    #with open('json/main.json', 'w') as f:
-        #json.dump(data, f)
-
-    #f.close
-    checkForValueJSON('david')
     file_size = os.path.getsize('json/main.json')
-    print(file_size)
-    if file_size > 0:
-        print("file is here")
-        with open('json/main.json', 'r') as f:
-            data = json.load(f)
-            
-        
-        if 'name' in data:
-            print('key exists')
+    print('main')
+    sentence = input('enter a sentence: ')
+    #print(len(sentence))
+
+    #with open('json/main.json', 'r') as file:
+        #data = json.load(file)
+
+    #for y in range(len(sentence)):
+        #new_data = {y: y}
+        #data.append(new_data)        
+
+
+    #with open('json/main.json', 'w') as file:
+        #json.dump(data, file)
+
+    for x in range(len(sentence)):
+        if sentence[x] == " ":
+            print('space')
         else:
+            print(sentence[x])
 
-            print('key did not exist')
-            data['name'] = "the"
-        #data.append(new_data)
+    if file_size > 0:
+        with open('json/main.json') as file:
+            data = json.load(file)
 
-        with open('json/main.json', 'w') as d:
-            json.dump(data, d)
-
-           
+        for x in range(len(sentence)):
+            data[x] = sentence
 
 
-    else: 
-        print("file is not here")
-        data = { 
-            "test": "test"
+        with open('json/main.json', 'w') as file:
+            json.dump(data, file)
+
+
+    else:
+        print('file not here')
+        data = {
+            "Test": "Test"
         }
-        with open('json/main.json', 'w') as f:
-            json.dump(data, f)
-
-        f.close()
-        
-
-    
-    
+        with open('json/main.json', 'w') as file:
+            json.dump(data, file)
+            
 
 
 main()
